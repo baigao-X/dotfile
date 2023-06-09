@@ -34,6 +34,37 @@ return {
 		},
 	},
 	{
+		--- 多光标操作
+		"mg979/vim-visual-multi",
+	},
+	{
+		--- 当相对行号无意义时，自动切换为绝对行号
+		"jeffkreeftmeijer/vim-numbertoggle",
+	},
+	{
+		--- 高亮标记字符
+		"inkarkat/vim-mark",
+		dependencies = {
+			"inkarkat/vim-ingo-library",
+		},
+		keys = {
+			{ "<leader>mm", "<Plug>MarkSet<CR>", desc = "设置高亮标记" },
+			{ "<leader>ms", "<Plug>MarkToggle<CR>", desc = "切换高亮标记显示状态" },
+			{ "<leader>mr", "<Plug>MarkRegex<CR>", desc = "设置正则高亮标记" },
+			{ "<leader>mc", "<Plug>MarkClear<CR>", desc = "清除指定高亮标记" },
+			{ "<leader>ma", "<Plug>MarkConfirmAllClear<CR>", desc = "清除全部高亮标记" },
+		},
+		config = function()
+			vim.g.mwDefaultHighlightingPalette = "maximun" -- 增强配色
+			vim.g.mwAutoSaveMarks = 1 -- 自动保存以前会话中的标记
+			vim.g.mwAutoLoadMarks = 1 -- 自动从以前的会话中恢复标记
+		end,
+	},
+	-- {
+	-- 	--- 显示打开文本的 git/svn 修改状态
+	-- 	"mhinz/vim-signify",
+	-- },
+	{
 		"stevearc/overseer.nvim",
 		opts = {},
 	},
