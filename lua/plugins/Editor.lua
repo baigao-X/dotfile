@@ -74,9 +74,12 @@ return {
 			"skywind3000/asyncrun.vim",
 
 			config = function()
-				vim.g.asyncrun_open = 10
+				vim.g.asyncrun_open = 10 -- 执行asyncrun任务时，自动打开quickfix window,高度为10
 				vim.g.asyncrun_rootmarks = { ".svn", ".git", ".root", ".work" }
 			end,
+			keys = {
+				{ "<F5>", ":call asyncrun#quickfix_toggle(6)<cr>", desc = "toogle quickfix" },
+			},
 		},
 		keys = {
 			{ "<F6>", "<cmd>AsyncTask default-build<cr>", desc = "执行默认任务" },

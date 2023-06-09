@@ -20,5 +20,5 @@ end
 
 -- 设置jk 为 ESC键
 map("i", "jk", "<ESC>", { desc = "ESC" })
-map("n", "<Leader>q", ":q", { desc = "退出当前窗口" })
-map("n", "<Leader>w", ":w", { desc = "保存当前窗口" })
+map("n", "<Leader>q", ":q<cr>", { desc = "退出当前窗口" })
+map("n", "<Leader>w", ":w<cr>", { desc = "保存当前窗口" })
