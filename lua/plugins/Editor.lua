@@ -96,4 +96,7 @@ return {
 			vim.g.asynctasks_config_name = "task/.vim-task"
 		end,
 	},
+	{
+		"sindrets/diffview.nvim",
+	},
 }
