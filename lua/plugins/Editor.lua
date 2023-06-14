@@ -16,12 +16,15 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
-        cmd = "Telescope",
-        keys = {
-            -- lsp 
-            { "<leader>gd", "<cmd>Telescope definitions<CR>", desc = "Goto definitions" },
-            { "<leader>gr", "<cmd>Telescope references<CR>", desc = "Goto references" },
-        },
+		cmd = "Telescope",
+		keys = {
+			-- lsp
+			-- { "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", desc = "Goto definitions" },
+			-- { "<leader>gr", "<cmd>Telescope lsp_references<CR>", desc = "Goto references" },
+			-- { "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "Goto implementations" },
+			-- { "<leader>ga", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Goto Symbol (Workspace)" },
+			-- { "<leader>gA", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "Goto Symbol" },
+		},
 		opts = {
 			defaults = {
 				mappings = {
