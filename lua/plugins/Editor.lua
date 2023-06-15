@@ -93,7 +93,7 @@ return {
 			{ "<F6>", "<cmd>AsyncTask default-build<cr>", desc = "执行默认任务" },
 		},
 		config = function()
-			vim.g.asynctasks_config_name = "task/.vim-task"
+			vim.g.asynctasks_config_name = ".task/.vim-task"
 		end,
 	},
 	{
