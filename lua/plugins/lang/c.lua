@@ -18,7 +18,7 @@ return {
 						return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
 					end,
 					init_options = {
-						compilationdatabasedirectory = "build",
+						compilationDatabaseDirectory = "build",
 						index = {
 							threads = 0,
 						},
