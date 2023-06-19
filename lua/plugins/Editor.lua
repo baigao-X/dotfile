@@ -41,9 +41,62 @@ return {
 			},
 		},
 	},
-	{
-		--- 多光标操作
-		"mg979/vim-visual-multi",
+    {
+        "ggandor/leap.nvim",
+        keys = {
+            { "s", mode = { "n", "x", "o" }, desc = "Leap orward" },
+            -- { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+            -- { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+            -- { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+        },
+        config = function(_, opts)
+            local leap = require("leap")
+            for k, v in pairs(opts) do
+                leap.opts[k] = v
+            end
+            leap.add_default_mappings(true)
+
+            vim.keymap.del({'x', 'o'}, 'x')
+            vim.keymap.del({'x', 'o'}, 'X')
+            -- To set alternative keys for "exclusive" selection:
+            vim.keymap.set({'x', 'o'}, 's', '<Plug>(leap-forward-till)')
+            vim.keymap.set({'x', 'o'}, 'S', '<Plug>(leap-backward-till)')
+
+            -- vim.keymap.del({'n', 'x', 'o'}, 's')
+            vim.keymap.del({'n', 'x', 'o'}, 'S')
+            vim.keymap.del({'n', 'x', 'o'}, 'gs')
+            -- 全屏搜索
+            vim.keymap.set('n', 's', function ()
+                local focusable_windows_on_tabpage = vim.tbl_filter(
+                    function (win) return vim.api.nvim_win_get_config(win).focusable end,
+                    vim.api.nvim_tabpage_list_wins(0)
+                )
+                require('leap').leap { target_windows = focusable_windows_on_tabpage }
+            end)
+
+            -- The below settings make Leap's highlighting closer to what you've been
+            -- used to in Lightspeed.
+
+            -- vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' }) -- or some grey
+            vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' }) -- or some grey
+            vim.api.nvim_set_hl(0, 'LeapMatch', {
+                -- For light themes, set to 'black' or similar.
+                fg = 'white', bold = true, nocombine = true,
+            })
+            -- Of course, specify some nicer shades instead of the default "red" and "blue".
+            -- vim.api.nvim_set_hl(0, 'LeapLabelPrimary', {
+            --     fg = 'yellow', bold = true, nocombine = true,
+            -- })
+            vim.api.nvim_set_hl(0, 'LeapLabelSecondary', {
+                fg = 'blue', bold = true, nocombine = true,
+            })
+            -- Try it without this setting first, you might find you don't even miss it.
+            require('leap').opts.highlight_unlabeled_phase_one_targets = true
+        end,
+    },
+    {
+        --- 多光标操作
+        "mg979/vim-visual-multi",
 	},
 	{
 		--- 当相对行号无意义时，自动切换为绝对行号
