@@ -25,6 +25,9 @@ return {
 			-- { "<leader>ga", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Goto Symbol (Workspace)" },
 			-- { "<leader>gA", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "Goto Symbol" },
 		},
+        config = function()
+            vim.keymap.del({'n'}, "<leader><space>")
+        end,
 		opts = {
 			defaults = {
 				mappings = {
