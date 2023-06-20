@@ -12,5 +12,9 @@ opt.clipboard:append {"unnamedplus"}                  -- 设置vim复制到系�
 opt.wrap = true                                       -- 自动换行
 opt.textwidth = 120                                   -- 设置一行最大显示字符
 -- opt.colorcolumn = 120
+opt.enc="utf-8"
+opt.fenc="utf-8"
+opt.fencs={"utf-8", "gbk", "gb180230", "usc-bom", "euc-jpk", "gb2312", "cp936"}
+opt.fileformats={"unix", "dos"}
 
 
