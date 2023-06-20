@@ -113,14 +113,14 @@ return {
 		},
 		keys = {
 			{ "<leader>mm", "<Plug>MarkSet<CR>", desc = "设置高亮标记" },
-			{ "<leader>ms", "<Plug>MarkToggle<CR>", desc = "切换高亮标记显示状态" },
+            { "<leader>ms", "<Plug>MarkToggle<CR>", desc = "切换高亮标记显示状态" },
 			{ "<leader>mr", "<Plug>MarkRegex<CR>", desc = "设置正则高亮标记" },
 			{ "<leader>mc", "<Plug>MarkClear<CR>", desc = "清除指定高亮标记" },
 			{ "<leader>ma", "<Plug>MarkConfirmAllClear<CR>", desc = "清除全部高亮标记" },
 		},
-		config = function()
+		init = function()
 			vim.g.mw_no_mappings = 0
-			vim.g.mwDefaultHighlightingPalette = "maximun" -- 增强配色
+			vim.g.mwDefaultHighlightingPalette = "maximum" -- 增强配色
 			vim.g.mwAutoSaveMarks = 1 -- 自动保存以前会话中的标记
 			vim.g.mwAutoLoadMarks = 1 -- 自动从以前的会话中恢复标记
 		end,
