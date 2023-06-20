@@ -122,7 +122,7 @@ return {
 			vim.g.mw_no_mappings = 0
 			vim.g.mwDefaultHighlightingPalette = "maximum" -- 增强配色
 			vim.g.mwAutoSaveMarks = 1 -- 自动保存以前会话中的标记
-			vim.g.mwAutoLoadMarks = 1 -- 自动从以前的会话中恢复标记
+            vim.g.mwAutoLoadMarks = 1 -- 自动从以前的会话中恢复标记
 		end,
 	},
     -- {
@@ -136,14 +136,16 @@ return {
                 "builtin",
                 "user.sh_build",
                 "user.cpp_build",
-                "user.run_script"
+                -- "user.run_script",
             },
         },
-        -- config = function()
-        --    require("overseer").setup({
-        --         templates = { "builtin", "user.cpp_build" },
-        --     })
-        -- end,
+		keys = {
+			{ "<leader>od", "<cmd>OverseerRun default<cr>", desc = "执行默认构建任务" },
+			{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "执行任务" },
+			{ "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "打开任务列表" },
+			{ "<leader>oq", "<cmd>OverseerQuickAction open output in quickfix<cr>", desc = "显示任务输出 in quickfix" },
+			{ "<leader>of", "<cmd>OverseerQuickAction float<cr>", desc = "显示任务输出 in quickfix" },
+		},
 	},
 	{
 		"skywind3000/asynctasks.vim",
