@@ -119,12 +119,13 @@ return {
 			{ "<leader>ma", "<Plug>MarkConfirmAllClear<CR>", desc = "清除全部高亮标记" },
 		},
 		config = function()
+			vim.g.mw_no_mappings = 0
 			vim.g.mwDefaultHighlightingPalette = "maximun" -- 增强配色
 			vim.g.mwAutoSaveMarks = 1 -- 自动保存以前会话中的标记
 			vim.g.mwAutoLoadMarks = 1 -- 自动从以前的会话中恢复标记
 		end,
 	},
-	-- {
+    -- {
 	-- 	--- 显示打开文本的 git/svn 修改状态
 	-- 	"mhinz/vim-signify",
 	-- },

@@ -47,5 +47,9 @@ return {
                 "ninja",
             })
         end,
-    }
+    },
+	-- cmake-tools
+	{
+		"Civitasv/cmake-tools.nvim",
+	},
 }

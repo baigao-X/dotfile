@@ -1,5 +1,4 @@
 return {
-	-- markdown
 	{
 		"iamcco/markdown-preview.nvim",
 		config = function()
@@ -21,9 +20,5 @@ return {
 		keys = {
 			{ "<Leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "markdown 预览" },
 		},
-	},
-	-- cmake-tools
-	{
-		"Civitasv/cmake-tools.nvim",
 	},
 }
