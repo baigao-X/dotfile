@@ -131,7 +131,19 @@ return {
 	-- },
 	{
 		"stevearc/overseer.nvim",
-		opts = {},
+        opts = {
+            templates = {
+                "builtin",
+                "user.sh_build",
+                "user.cpp_build",
+                "user.run_script"
+            },
+        },
+        -- config = function()
+        --    require("overseer").setup({
+        --         templates = { "builtin", "user.cpp_build" },
+        --     })
+        -- end,
 	},
 	{
 		"skywind3000/asynctasks.vim",
