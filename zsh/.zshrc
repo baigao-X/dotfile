@@ -4,9 +4,15 @@
 #setterm -blength 0
 #
 #
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=500000
+SAVEHIST=500000
+setopt appendhistory
+setopt INC_APPEND_HISTORY  
+setopt SHARE_HISTORY
+
 zstyle ':zim:zmodule' use 'degit'
 ZIM_HOME=~/.local/zim
-HISTSIZE=10000
 
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -29,5 +35,7 @@ fi
 source ${ZIM_HOME}/init.zsh
 
 
-alias ra=ranger
-alias lg=lazygit
+alias ra="ranger"
+alias lg="lazygit"
+alias nginx="/usr/local/nginx/sbin/nginx"
+alias screenkey="screenkey -p fixed -g 25%x5%+70%-10%"
