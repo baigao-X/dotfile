@@ -143,6 +143,7 @@ setopt autocd
 unsetopt beep
 
 export EDITOR=nvim
+export DWM=${HOME}/.local/share/dwm
 
 export PATH=/home/baigao/.local/bin:${PATH}
 
