@@ -156,16 +156,12 @@ export PATH=/home/baigao/.local/bin:${PATH}
 ## bashmarks 
 [ -f ~/.local/share/bashmarks/bashmarks.sh ] && source ~/.local/share/bashmarks/bashmarks.sh
 
-# 代理
-#export ALL_PROXY=socks5://127.0.0.1:10808
-
 alias ls="ls --color"
 alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias lg="lazygit"
 alias nginx="/usr/local/nginx/sbin/nginx"
 alias screenkey="screenkey -p fixed -g 25%x5%+70%-10%"
 
-
-neofetch --w3m --source ${HOME}/.local/share/neofetch/communist | lolcat
+# neofetch --w3m --source ${HOME}/.local/share/neofetch/communist | lolcat
 
 
