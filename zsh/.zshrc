@@ -144,6 +144,9 @@ unsetopt beep
 
 export EDITOR=nvim
 export DWM=${HOME}/.local/share/dwm
+export BROWSER=google-chrome-stable
+export ALL_PROXY=socks5://127.0.0.1:10808
+# alias google-chrome-stable="google-chrome-stable --proxy-server="${ALL_PROXY}"
 
 export PATH=/home/baigao/.local/bin:${PATH}
 
