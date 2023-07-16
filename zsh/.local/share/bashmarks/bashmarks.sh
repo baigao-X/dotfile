@@ -34,7 +34,7 @@
 
 # setup file to store bookmarks
 if [ ! -n "$SDIRS" ]; then
-    SDIRS=~/.sdirs
+    SDIRS=~/.cache/sdirs
 fi
 touch $SDIRS
 
@@ -145,6 +145,8 @@ function _purge_line {
         # safely create a temp file
         t=$(mktemp -t bashmarks.XXXXXX) || exit 1
         trap "/bin/rm -f -- '$t'" EXIT
+
+        [ -e "$t" ] && /bin/rm -rf "$t"
 
         # purge line
         sed "/$2/d" "$1" > "$t"
