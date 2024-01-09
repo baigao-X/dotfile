@@ -16,5 +16,8 @@ opt.enc="utf-8"
 opt.fenc="utf-8"
 opt.fencs={"utf-8", "gbk", "gb180230", "usc-bom", "euc-jpk", "gb2312", "cp936"}
 opt.fileformats={"unix", "dos"}
-
+opt.eol = false
+opt.eof = false
+opt.endofline = false
+opt.binary = true
 
