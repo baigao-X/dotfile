@@ -148,8 +148,9 @@ export BROWSER=google-chrome-stable
 # export ALL_PROXY=socks5://127.0.0.1:10808
 # alias google-chrome-stable="google-chrome-stable --proxy-server="${ALL_PROXY}"
 
-export PATH=/home/baigao/.local/bin:${PATH}
-export PATH=/home/baigao/go/bin:${PATH}
+export PATH=$HOME/.local/bin:${PATH}
+export PATH=$HOME/go/bin:${PATH}
+export PATH=$HOME/.local/bin/cpptool/extension/debugAdapters/bin:${PATH}
 
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
