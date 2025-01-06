@@ -19,5 +19,5 @@ opt.fileformats={"unix", "dos"}
 opt.eol = false
 opt.eof = false
 opt.endofline = false
-opt.binary = true
+opt.binary = false
 
