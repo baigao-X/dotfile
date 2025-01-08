@@ -150,11 +150,29 @@ return {
             },
 
             ---@type lc.highlights
-            theme = {},
+            theme = {
+                ["alt"] = {
+                    bg = "#FFFFFF",
+                },
+                ["normal"] = {
+                    fg = "#EA4AAA",
+                },
+            },
 
             ---@type boolean
             image_support = false,
+
+            keymaps = {
+                vim.keymap.set({'n', 'v'}, '<leader>tl', ':Leet list<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>td', ':Leet desc<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>to', ':Leet open<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>ty', ':Leet yank<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>ti', ':Leet info<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>tt', ':Leet test<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>ts', ':Leet submit<CR>'),
+            }
         },
+
     },
     {
         "simrat39/symbols-outline.nvim",
