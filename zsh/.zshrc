@@ -151,6 +151,7 @@ export BROWSER=google-chrome-stable
 export PATH=$HOME/.local/bin:${PATH}
 export PATH=$HOME/go/bin:${PATH}
 export PATH=$HOME/.local/bin/cpptool/extension/debugAdapters/bin:${PATH}
+export PATH=$HOME/.local/share/FlameGraph:${PATH}
 
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
