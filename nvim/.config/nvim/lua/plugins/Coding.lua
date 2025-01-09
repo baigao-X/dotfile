@@ -170,6 +170,7 @@ return {
                 vim.keymap.set({'n', 'v'}, '<leader>ti', ':Leet info<CR>'),
                 vim.keymap.set({'n', 'v'}, '<leader>tt', ':Leet test<CR>'),
                 vim.keymap.set({'n', 'v'}, '<leader>ts', ':Leet submit<CR>'),
+                vim.keymap.set({'n', 'v'}, '<leader>tr', ':Leet last_submit<CR>'),
             }
         },
 
