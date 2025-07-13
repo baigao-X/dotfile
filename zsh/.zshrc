@@ -152,6 +152,7 @@ export PATH=$HOME/.local/bin:${PATH}
 export PATH=$HOME/go/bin:${PATH}
 export PATH=$HOME/.local/bin/cpptool/extension/debugAdapters/bin:${PATH}
 export PATH=$HOME/.local/share/FlameGraph:${PATH}
+export PATH=$HOME/.local/bin/depot_tools:${PATH}
 
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -167,4 +168,5 @@ alias screenkey="screenkey -p fixed -g 25%x5%+70%-10%"
 
 # neofetch --w3m --source ${HOME}/.local/share/neofetch/communist | lolcat
 
-
+## API_KEY
+[ -f ~/.api_key.sh ] && source ~/.api_key.sh
