@@ -1,5 +1,125 @@
 return {
 	{
+		"robitx/gp.nvim",
+		config = function()
+			local gemini_api_key = os.getenv("GEMINI_API_KEY")
+			
+			if not gemini_api_key then
+				vim.notify("GEMINI_API_KEY 环境变量未设置", vim.log.levels.ERROR)
+				return
+			end
+			
+			require("gp").setup({
+				-- 完全禁用 OpenAI
+				openai_api_key = nil,
+				providers = {
+					openai = nil, -- 禁用 OpenAI provider
+					googleai = {
+						endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{{model}}:generateContent?key=" .. gemini_api_key,
+						secret = gemini_api_key,
+					},
+				},
+				-- 只配置 Gemini 代理，覆盖默认配置
+				agents = {
+					{
+						name = "Gemini-Flash",
+						provider = "googleai", 
+						chat = true,
+						command = true,
+						model = { model = "gemini-1.5-flash", temperature = 0.7, top_p = 1 },
+						system_prompt = "You are a helpful coding assistant. Always respond in the same language as the user's input.",
+					},
+				},
+				-- 设置默认代理
+				default_command_agent = "Gemini-Flash",
+				default_chat_agent = "Gemini-Flash",
+				
+				chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g><C-g>" },
+				chat_shortcut_delete = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>d" },
+				chat_shortcut_stop = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>s" },
+				chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>c" },
+			})
+			
+			-- 自定义快捷键，明确指定使用 Gemini 代理
+			vim.keymap.set({'n', 'v'}, '<leader>ai', '<cmd>GpChatNew Gemini-Flash<cr>', { desc = "新建 Gemini 对话" })
+			vim.keymap.set({'n', 'v'}, '<leader>ac', '<cmd>GpAppend Gemini-Flash<cr>', { desc = "Gemini 代码补全" })
+			vim.keymap.set({'n', 'v'}, '<leader>ar', '<cmd>GpRewrite Gemini-Flash<cr>', { desc = "Gemini 重写代码" })
+			
+			-- 创建自定义的解释代码命令
+			vim.keymap.set({'n', 'v'}, '<leader>ae', function()
+				-- 获取选中的文本或当前行
+				local mode = vim.fn.mode()
+				local text = ""
+				if mode == 'v' or mode == 'V' then
+					-- 可视模式下获取选中文本
+					vim.cmd('normal! "zy')
+					text = vim.fn.getreg('z')
+				else
+					-- 普通模式下获取当前行
+					text = vim.fn.getline('.')
+				end
+				
+				-- 构建解释提示
+				local prompt = "请解释以下代码的功能和工作原理：\n\n" .. text
+				
+				-- 创建新的聊天会话并发送提示
+				vim.cmd('GpChatNew Gemini-Flash')
+				-- 等待聊天窗口打开后发送消息
+				vim.defer_fn(function()
+					vim.api.nvim_put({prompt}, 'l', true, true)
+					vim.cmd('normal! G')
+				end, 100)
+			end, { desc = "Gemini 解释代码" })
+			
+			-- 添加调试命令
+			vim.api.nvim_create_user_command('GpDebug', function()
+				print("=== GP.nvim 调试信息 ===")
+				
+				-- 检查模块是否存在
+				local ok, gp = pcall(require, "gp")
+				if ok then
+					print("✅ gp.nvim 模块加载成功")
+					
+					-- 检查代理配置
+					if gp.agents then
+						print("当前配置的代理:")
+						for name, agent in pairs(gp.agents) do
+							print("- " .. name .. " (provider: " .. agent.provider .. ")")
+						end
+					else
+						print("❌ 没有找到代理配置")
+					end
+					
+					-- 列出所有 Gp 命令
+					print("\n可用的 Gp 命令:")
+					local commands = vim.api.nvim_get_commands({})
+					local gp_commands = {}
+					for name, _ in pairs(commands) do
+						if string.match(name, "^Gp") then
+							table.insert(gp_commands, name)
+						end
+					end
+					
+					if #gp_commands > 0 then
+						for _, cmd in ipairs(gp_commands) do
+							print("- " .. cmd)
+						end
+					else
+						print("❌ 没有找到 Gp 命令")
+					end
+				else
+					print("❌ gp.nvim 模块加载失败: " .. tostring(gp))
+				end
+				
+				-- 检查 API Key
+				local api_key = os.getenv("GEMINI_API_KEY")
+				print("\nAPI Key: " .. (api_key and "已设置 (前10字符: " .. string.sub(api_key, 1, 10) .. "...)" or "未设置"))
+				
+			end, { desc = "GP.nvim 调试信息" })
+			
+		end,
+	},
+	{
 		"theniceboy/antovim",
 		keys = {
 			{ "<leader>an", "<Cmd>Antovim<CR>", desc = "Switch antonym" },
