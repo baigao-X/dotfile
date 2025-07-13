@@ -168,6 +168,9 @@ alias screenkey="screenkey -p fixed -g 25%x5%+70%-10%"
 
 # neofetch --w3m --source ${HOME}/.local/share/neofetch/communist | lolcat
 
+## env 
+[ -f ~/.env ] && source ~/.env
+
 ## API_KEY
 [ -f ~/.api.key ] && source ~/.api.key
 
