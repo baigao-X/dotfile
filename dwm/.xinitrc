@@ -23,5 +23,11 @@ if [ -f ~/.xmodmap ]; then
     xmodmap ~/.xmodmap
 fi
 
+# 启动本地剪贴板管理器
+clipmenud &
+
+# 启动 VMware Tools 用户服务
+vmtoolsd -n vmusr &
+
 exec dwm   #万事具备，启动dwm
 

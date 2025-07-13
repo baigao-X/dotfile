@@ -18,3 +18,10 @@ xrandr -s 2560x1440 #关于xrandr的这两行配置，每一行后面都不要�
 if [ -f ~/.xmodmap ]; then
     xmodmap ~/.xmodmap
 fi
+
+# 启动本地剪贴板管理器
+clipmenud &
+
+# 启动 VMware Tools 用户服务
+vmtoolsd -n vmusr &
+
