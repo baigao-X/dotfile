@@ -173,4 +173,21 @@ return {
     {
         "lambdalisue/suda.vim"
     },
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = function(_, opts)
+            -- 完全移除废弃的 signs_staged 配置
+            opts.signs_staged = nil
+            return vim.tbl_deep_extend("force", opts, {
+                signs = {
+                    add = { text = "▎" },
+                    change = { text = "▎" },
+                    delete = { text = "" },
+                    topdelete = { text = "" },
+                    changedelete = { text = "▎" },
+                    untracked = { text = "▎" },
+                },
+            })
+        end,
+    },
 }
