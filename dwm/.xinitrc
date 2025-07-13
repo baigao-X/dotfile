@@ -10,9 +10,18 @@ export GLFW_IM_MODULE=ibus
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 # xrandr --auto   #关于xrandr的这两行配置，每一行后面都不要加上"&"，否则nvidia驱动不能正常加载，会导致黑屏
 # xrandr --dpi 96 -s 2560x1440   #关于xrandr的这两行配置，每一行后面都不要加上"&"，否则nvidia驱动不能正常加载，会导致黑屏
+#xrandr -s 1920x1080   #关于xrandr的这两行配置，每一行后面都不要加上"&"，否则nvidia驱动不能正常加载，会导致黑屏
+xrandr --newmode "2560x1440"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync #增加分辨率
+xrandr --addmode Virtual-1 2560x1440
 xrandr -s 2560x1440   #关于xrandr的这两行配置，每一行后面都不要加上"&"，否则nvidia驱动不能正常加载，会导致黑屏
-xrandr -s 1920x1080   #关于xrandr的这两行配置，每一行后面都不要加上"&"，否则nvidia驱动不能正常加载，会导致黑屏
+
+#xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+#xrandr --addmode Virtual-1 1920x1080_60.00
+#xrandr -s 1920x1080_60.00   #关于xrandr的这两行配置，每一行后面都不要加上"&"，否则nvidia驱动不能正常加载，会导致黑屏
+
+if [ -f ~/.xmodmap ]; then
+    xmodmap ~/.xmodmap
+fi
 
 exec dwm   #万事具备，启动dwm
-
 
